@@ -3,16 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Document</title>
+  <title>Test_task</title>
 </head>
 
 <body>
   <header class="App-header">
     <div class="container">
-      <h1>Game of Life ggg</h1>
+      <!-- <h1>Игра "Жизнь" </h1> -->
     </div>
   </header>
 
@@ -22,18 +21,22 @@
     <div class="container">
       <div class="actions">
         <button class='clear' id='clear'>
-          Clear
+          Очистить
         </button>
         <button class='random' id="random">
-          Randomize
+          Заполнить рандомно
         </button>
       </div>
       <div class="controls">
         <button class="play-button" id="play">Play</button>
       </div>
       <div class="stats">
-        <p>Step: <span id="step">0</span></p>
-        <p>Cells alive: <span id="alive">0</span></p>
+        <p>Шаг: <span id="step">0</span></p>
+        <p>Живых клеток: <span id="alive">0</span></p>
+      </div>
+      <div class="grid-size">
+        <p>Ширина: <input id="grid-width" type="number" value="10"></p>
+        <p>Высота: <input id="grid-height" type="number" value="10"></p>
       </div>
     </div>
   </footer>
