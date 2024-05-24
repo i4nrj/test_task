@@ -1,34 +1,20 @@
+
+// Input values:
 const columns = document.getElementById("grid-width");
 const rows = document.getElementById("grid-height");
-//Inputs
+
 columns.addEventListener("change", () => {
   stop();
-  INIT_GRID_SIZE = {
-    cols: parseInt(columns.value),
-    rows: parseInt(rows.value),
-  };
-  gridSize = INIT_GRID_SIZE;
-  grid = generateEmptyGrid(INIT_GRID_SIZE);
-  paintNewGrid();
-  countCells();
-  onResize();
+  refreshInputs();
 });
 
 rows.addEventListener("change", () => {
   stop();
-  INIT_GRID_SIZE = {
-    cols: parseInt(columns.value),
-    rows: parseInt(rows.value),
-  };
-  gridSize = INIT_GRID_SIZE;
-  grid = generateEmptyGrid(INIT_GRID_SIZE);
-  paintNewGrid();
-  countCells();
-  onResize();
+  refreshInputs();
 });
 
 // Settings:
-var INIT_GRID_SIZE = { cols: 0, rows: 0 };
+var INIT_GRID_SIZE = { cols: 10, rows: 10 };
 const INIT_SPEED = 150;
 
 // Constants
@@ -225,6 +211,20 @@ function countCells() {
     (acc, row) => acc + row.reduce((acc, col) => acc + col, 0),
     0
   );
+}
+
+// refresh inputs
+
+function refreshInputs(){
+  INIT_GRID_SIZE = {
+    cols: parseInt(columns.value),
+    rows: parseInt(rows.value),
+  };
+  gridSize = INIT_GRID_SIZE;
+  grid = generateEmptyGrid(INIT_GRID_SIZE);
+  paintNewGrid();
+  countCells();
+  onResize();
 }
 
 // -----
