@@ -116,6 +116,7 @@ footer .actions button {
 footer .stats {
   text-align: left;
   width: 150px;
+  white-space: nowrap;
 }
 footer .stats p {
   margin-bottom: 5px;

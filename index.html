@@ -11,7 +11,7 @@
 <body>
   <header class="App-header">
     <div class="container">
-      <!-- <h1>Игра "Жизнь" </h1> -->
+      <h1>Игра "Жизнь" </h1>
     </div>
   </header>
 
@@ -33,10 +33,11 @@
       <div class="stats">
         <p>Шаг: <span id="step">0</span></p>
         <p>Живых клеток: <span id="alive">0</span></p>
+        <p>Время генерации: <span> 150 мс</span></p>
       </div>
       <div class="grid-size">
-        <p>Ширина: <input id="grid-width" type="number" value="10"></p>
-        <p>Высота: <input id="grid-height" type="number" value="10"></p>
+        <p>Ширина: <input id="grid-width" min="2" type="number" value="10"></p>
+        <p>Высота: <input id="grid-height" min="2" type="number" value="10"></p>
       </div>
     </div>
   </footer>

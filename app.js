@@ -1,4 +1,3 @@
-
 // Input values:
 const columns = document.getElementById("grid-width");
 const rows = document.getElementById("grid-height");
@@ -70,14 +69,12 @@ clearButton.addEventListener("click", () => {
   stop();
   grid = generateEmptyGrid(INIT_GRID_SIZE);
   paintNewGrid();
+  countCells();
 });
-
-
 
 // window events
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onResize);
-
 setInterval(() => runSimulation(), INIT_SPEED);
 
 // Functions
@@ -87,21 +84,16 @@ function runSimulation() {
   if (!running) {
     return;
   }
-
   let gridCopy = JSON.parse(JSON.stringify(grid));
-
   for (let i = 0; i < gridSize.rows; i++) {
     for (let j = 0; j < gridSize.cols; j++) {
       let neighbors = 0;
-
       operations.forEach(([x, y]) => {
         // calculate neighbors
         const newI =
           i + x < 0 ? gridSize.rows - 1 : i + x > gridSize.rows - 1 ? 0 : i + x;
-
         const newJ =
           j + y < 0 ? gridSize.cols - 1 : j + y > gridSize.cols - 1 ? 0 : j + y;
-
         if (
           newI >= 0 &&
           newI < gridSize.rows &&
@@ -111,7 +103,6 @@ function runSimulation() {
           neighbors += grid[newI][newJ];
         }
       });
-
       // apply rules for next generation
       if (neighbors < 2 || neighbors > 3) {
         gridCopy[i][j] = 0;
@@ -173,13 +164,6 @@ function calcVisibleZone() {
         ? Math.floor(offset[1] / cellSize)
         : 0,
   };
-  console.log(
-    grid,
-    gridOffset.x,
-    visibleGridSize.x,
-    gridOffset.y,
-    visibleGridSize.y
-  );
   visibleGrid = getVisibleZone(
     grid,
     gridOffset.x,
@@ -214,17 +198,16 @@ function countCells() {
 }
 
 // refresh inputs
-
-function refreshInputs(){
+function refreshInputs() {
   INIT_GRID_SIZE = {
     cols: parseInt(columns.value),
     rows: parseInt(rows.value),
   };
   gridSize = INIT_GRID_SIZE;
   grid = generateEmptyGrid(INIT_GRID_SIZE);
+  onResize();
   paintNewGrid();
   countCells();
-  onResize();
 }
 
 // -----
@@ -321,12 +304,11 @@ function generateEmptyGrid(size) {
   }
   return rows;
 }
-
 function findCell(i, k) {
   return document.getElementById(`${i}-${k}`);
 }
 
-//get active, i.e. visible right now zone for the grid
+//get visible right now zone for the grid
 function getVisibleZone(grid, xStart, xLength, yStart, yLength) {
   const zone = [];
   for (let i = yStart; i < yLength + yStart; i++) {
